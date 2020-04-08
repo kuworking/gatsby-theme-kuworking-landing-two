@@ -12,6 +12,7 @@ import {
   wait,
   q,
   qq,
+  useReplace100vh,
 } from 'gatsby-theme-kuworking-landing-two'
 
 import './globalcss.css'
@@ -19,6 +20,7 @@ import './globalcss.css'
 export const Structure = ({ blogGrid }) => {
   const { innerHeight: iheight } = typeof window !== 'undefined' && window
   const [opacity, setOpacity] = useState('0')
+  useReplace100vh()
 
   const basePath = blogGrid.basePath
 
@@ -59,6 +61,7 @@ const Main = styled.main`
   max-width: 100%;
   width: 100%;
   min-height: 100vh; /* needed for the sticky footer */
+  min-height: calc(var(--vh, 1vh) * 100);
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
@@ -94,11 +97,11 @@ const Part = styled.div`
 const PartA = styled(Part)`
   opacity: ${props => props.opacity};
   min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
 
   & > div {
     background-color: ${props => props.theme.colors.backgroundimg__color};
     background-blend-mode: ${props => props.theme.colors.backgroundimg__mode};
-    transition: all 0.5s ease;
 
     padding: 0px 0px;
     ${() => qq(600)} {
